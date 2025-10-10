@@ -35,7 +35,7 @@ export interface Leader {
 export interface GameState {
   characters: Character[];
   leader: Leader;
-  diceResult: number | null;
+//   diceResult: number | null;
 }
 
 export interface Room {

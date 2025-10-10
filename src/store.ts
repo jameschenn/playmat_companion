@@ -21,8 +21,8 @@ interface GameStore extends GameState {
   toggleLeaderAbility: () => void;
   updateLeaderStatus: (status: CharacterStatus[]) => void;
   
-  // Dice actions
-  rollDice: () => void;
+  // // Dice actions (NOTE TO SELF: If you ever want to save dice results, uncomment all dice functions)
+  // rollDice: () => void; 
   
   // Game actions
   resetGame: () => void;
@@ -32,7 +32,7 @@ interface GameStore extends GameState {
 const INITIAL_STATE: GameState = {
   characters: Array(5).fill(null).map(() => createEmptyCharacter()),
   leader: { ...INITIAL_LEADER },
-  diceResult: null,
+  // diceResult: null,
 };
 
 export const useGameStore = create<GameStore>()(
@@ -120,16 +120,16 @@ export const useGameStore = create<GameStore>()(
         leader: { ...state.leader, status },
       })),
 
-      // Dice actions
-      rollDice: () => set(() => ({
-        diceResult: Math.floor(Math.random() * 6) + 1,
-      })),
+      // // Dice actions
+      // rollDice: () => set(() => ({
+      //   diceResult: Math.floor(Math.random() * 12) + 1,
+      // })),
 
       // Game actions
       resetGame: () => set({
         characters: Array(6).fill(null).map(() => createEmptyCharacter()),
         leader: { ...INITIAL_LEADER },
-        diceResult: null,
+        // diceResult: null,
       }),
 
       loadState: (state) => set(state),
