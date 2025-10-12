@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { Character, Leader, GameState, CharacterStatus, CharacterState } from './types';
+import type { Character, Leader, GameState, CharacterStatus, /*CharacterState*/ } from './types';
 import { INITIAL_LEADER, createEmptyCharacter } from './types';
 
 interface GameStore extends GameState {
@@ -23,6 +23,11 @@ interface GameStore extends GameState {
   
   // // Dice actions (NOTE TO SELF: If you ever want to save dice results, uncomment all dice functions)
   // rollDice: () => void; 
+
+  // Trash counter actions
+  incrementTrashCount: (type: 'character' | 'event') => void;
+  decrementTrashCount: (type: 'character' | 'event') => void;
+  resetTrashCount: () => void;
   
   // Game actions
   resetGame: () => void;
@@ -33,6 +38,10 @@ const INITIAL_STATE: GameState = {
   characters: Array(5).fill(null).map(() => createEmptyCharacter()),
   leader: { ...INITIAL_LEADER },
   // diceResult: null,
+  trashCount: {
+    character: 0,
+    event: 0,
+  },
 };
 
 export const useGameStore = create<GameStore>()(
@@ -124,6 +133,25 @@ export const useGameStore = create<GameStore>()(
       // rollDice: () => set(() => ({
       //   diceResult: Math.floor(Math.random() * 12) + 1,
       // })),
+
+      // Trash counter actions
+      incrementTrashCount: (type) => set((state) => ({
+        trashCount: {
+          ...state.trashCount,
+          [type]: state.trashCount[type] + 1,
+        },
+      })),
+
+      decrementTrashCount: (type) => set((state) => ({
+        trashCount: {
+          ...state.trashCount,
+          [type]: Math.max(0, state.trashCount[type] - 1),
+        },
+      })),
+
+      resetTrashCount: () => set({
+        trashCount: { character: 0, event: 0 },
+      }),
 
       // Game actions
       resetGame: () => set({

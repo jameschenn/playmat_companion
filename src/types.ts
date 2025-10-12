@@ -1,5 +1,5 @@
 export type CharacterStatus = 
-  | 'none'
+  // | 'none'
   | 'blocker'
   | 'rush'
   | 'double-attack'
@@ -13,19 +13,19 @@ export type CharacterStatus =
   | 'cost-increase'
   | 'cost-decrease';
 
-export type CharacterState = 'active' | 'rested';
+// export type CharacterState = 'active' | 'rested';
 
 export interface Character {
   id: string;
-  name: string;
+  // name: string;
   attack: number;
   cost: number;
   status: CharacterStatus[];
-  state: CharacterState;
+  // state: CharacterState;
 }
 
 export interface Leader {
-  name: string;
+  // name: string;
   attack: number;
   cost: number;
   abilityUsed: boolean;
@@ -36,6 +36,10 @@ export interface GameState {
   characters: Character[];
   leader: Leader;
 //   diceResult: number | null;
+  trashCount: {
+    character: number;
+    event: number;
+  }
 }
 
 export interface Room {
@@ -53,7 +57,7 @@ export interface Player {
 }
 
 export const STATUS_LABELS: Record<CharacterStatus, string> = {
-  'none': 'None',
+  // 'none': 'None',
   'blocker': 'Blocker',
   'rush': 'Rush',
   'double-attack': 'Double Attack',
@@ -69,7 +73,7 @@ export const STATUS_LABELS: Record<CharacterStatus, string> = {
 };
 
 export const INITIAL_LEADER: Leader = {
-  name: '',
+  // name: '',
   attack: 0,
   cost: 0,
   abilityUsed: false,
@@ -78,9 +82,9 @@ export const INITIAL_LEADER: Leader = {
 
 export const createEmptyCharacter = (): Character => ({
   id: crypto.randomUUID(),
-  name: '',
+  // name: '',
   attack: 0,
   cost: 0,
   status: [],
-  state: 'active',
+  // state: 'active',
 });
