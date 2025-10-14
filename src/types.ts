@@ -8,6 +8,7 @@ export type CharacterStatus =
   | 'frozen'
   | 'cant-attack'
   | 'immune-ko'
+  | 'tax'
   | 'power-buff'
   | 'power-debuff'
   | 'cost-increase'
@@ -66,6 +67,7 @@ export const STATUS_LABELS: Record<CharacterStatus, string> = {
   'frozen': 'Frozen',
   'cant-attack': "Can't Attack",
   'immune-ko': 'Immune to KO',
+  'tax': 'Tax',
   'power-buff': 'Power +1000',
   'power-debuff': 'Power -1000',
   'cost-increase': 'Cost +1',

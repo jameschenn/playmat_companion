@@ -19,13 +19,13 @@ export default function DiceRoll() {
     const maxFlashes = 12;
     
     const flashInterval = setInterval(() => {
-      setDisplayValue(Math.floor(Math.random() * 6) + 1);
+      setDisplayValue(Math.floor(Math.random() * 12) + 1);
       flashes++;
       
       if (flashes >= maxFlashes) {
         clearInterval(flashInterval);
         // Generate final result
-        const finalResult = Math.floor(Math.random() * 6) + 1;
+        const finalResult = Math.floor(Math.random() * 12) + 1;
         setTimeout(() => {
           setDisplayValue(finalResult);
           setResult(finalResult);
