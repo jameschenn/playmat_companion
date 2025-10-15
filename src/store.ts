@@ -9,6 +9,7 @@ interface GameStore extends GameState {
   // removeCharacter: (id: string) => void;
   // updateCharacter: (id: string, updates: Partial<Character>) => void;
   // updateCharacterName: (id: string, name: string) => void;
+  activateCharacter: (id: string) => void;
   updateCharacterAttack: (id: string, delta: number) => void;
   updateCharacterCost: (id: string, delta: number) => void;
   addCharacterStatus: (id: string, status: CharacterStatus) => void;
@@ -16,6 +17,7 @@ interface GameStore extends GameState {
   trashCharacter: (id: string) => void;
   // toggleCharacterState: (id: string) => void;
   // updateCharacterStatus: (id: string, status: CharacterStatus[]) => void;
+  swapCharacters: (id1: string, id2: string) => void;
   
   // Leader actions
   // updateLeader: (updates: Partial<Leader>) => void;
@@ -104,6 +106,12 @@ export const useGameStore = create<GameStore>()(
       //   ),
       // })),
 
+      activateCharacter: (id) => set((state) => ({
+        characters: state.characters.map((c) =>
+          c.id === id ? { ...c, isActive: true } : c
+        ),
+      })),
+
       updateCharacterAttack: (id, delta) => set((state) => ({
         characters: state.characters.map((c) =>
           c.id === id ? { ...c, attack: c.attack + delta } : c
@@ -139,6 +147,18 @@ export const useGameStore = create<GameStore>()(
             : c
         ),
       })),
+
+      swapCharacters: (id1, id2) => set((state) => {
+        const idx1 = state.characters.findIndex((c) => c.id === id1);
+        const idx2 = state.characters.findIndex((c) => c.id === id2);
+        
+        if (idx1 === -1 || idx2 === -1) return state;
+        
+        const newCharacters = [...state.characters];
+        [newCharacters[idx1], newCharacters[idx2]] = [newCharacters[idx2], newCharacters[idx1]];
+        
+        return { characters: newCharacters };
+      }),
 
       // Leader actions
       // updateLeader: (updates) => set((state) => ({

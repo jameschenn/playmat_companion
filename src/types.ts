@@ -22,6 +22,7 @@ export interface Character {
   attack: number;
   cost: number;
   status: CharacterStatus[];
+  isActive: boolean;
   // state: CharacterState;
 }
 
@@ -89,4 +90,5 @@ export const createEmptyCharacter = (): Character => ({
   cost: 0,
   status: [],
   // state: 'active',
+  isActive: false,
 });
