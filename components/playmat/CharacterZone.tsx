@@ -172,8 +172,7 @@ if (!character.isActive && !readonly) {
 
         {/* Dropdown Menu */}
         {isStatusOpen && !readonly && (
-        //   <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-700 rounded shadow-lg z-10">
-            <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-700 rounded shadow-lg z-50 max-h-60 overflow-y-auto">
+            <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-700 rounded shadow-lg z-[9999] max-h-60 overflow-y-auto">
             {(Object.entries(STATUS_LABELS) as [CharacterStatus, string][]).map(([value, label]) => (
               <button
                 key={value}

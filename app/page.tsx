@@ -92,11 +92,11 @@ export default function PlaymatPage() {
       </header>
 
       {/* Main Playmat Container */}
-      <div className="flex-1 flex flex-col gap-4 max-w-full mx-auto w-full bg-gradient-to-b from-gray-800 to-gray-900 rounded-xl shadow-2xl overflow-hidden border border-gray-700 p-4">
+      <div className="flex-1 flex flex-col gap-4 max-w-full mx-auto w-full bg-gradient-to-b from-gray-800 to-gray-900 rounded-xl shadow-2xl border border-gray-700 p-4">
         
         {/* TOP HALF - Character Zone (5 draggable slots) */}
-        <div className="flex-1 flex flex-col">
-          <h2 className="text-lg md:text-xl font-black text-white mb-3 uppercase tracking-wider">
+        <div className="flex-1 flex flex-col min-h-0 relative z-50">
+           <h2 className="text-lg md:text-xl font-black text-white mb-3 uppercase tracking-wider">
             ⚔️ Character Zone
           </h2>
           
