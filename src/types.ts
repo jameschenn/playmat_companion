@@ -1,18 +1,15 @@
-export type CharacterStatus = 
-  // | 'none'
-  | 'blocker'
-  | 'rush'
-  | 'double-attack'
+export type CharacterStatus =
   | 'banish'
-  | 'trigger'
+  | 'blocker'
+  | `can't-attack`
+  | `can't-block`
+  | 'double-attack'
   | 'frozen'
-  | 'cant-attack'
   | 'immune-ko'
+  | 'nullified'
+  | 'rush'
   | 'tax'
-  | 'power-buff'
-  | 'power-debuff'
-  | 'cost-increase'
-  | 'cost-decrease';
+  | 'untargetable';
 
 // export type CharacterState = 'active' | 'rested';
 
@@ -59,20 +56,17 @@ export interface Player {
 }
 
 export const STATUS_LABELS: Record<CharacterStatus, string> = {
-  // 'none': 'None',
-  'blocker': 'Blocker',
-  'rush': 'Rush',
-  'double-attack': 'Double Attack',
   'banish': 'Banish',
-  'trigger': 'Trigger',
+  'blocker': 'Blocker',
+  "can't-attack": "Can't Attack",
+  "can't-block": "Can't Block",
+  'double-attack': 'Double Attack',
   'frozen': 'Frozen',
-  'cant-attack': "Can't Attack",
   'immune-ko': 'Immune to KO',
+  'nullified': 'Nullified',
+  'rush': 'Rush',
   'tax': 'Tax',
-  'power-buff': 'Power +1000',
-  'power-debuff': 'Power -1000',
-  'cost-increase': 'Cost +1',
-  'cost-decrease': 'Cost -1',
+  'untargetable': 'Untargetable',
 };
 
 export const INITIAL_LEADER: Leader = {
