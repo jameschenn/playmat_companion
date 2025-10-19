@@ -83,12 +83,13 @@ export default function PlaymatPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black p-3 md:p-4 flex flex-col">
       {/* Header */}
       <header className="text-center mb-3 md:mb-4">
+        {/* <img src="/favicon.ico" alt="Favicon" className="mx-auto w-1/15 mb-5" /> */}
         <h1 className="text-2xl md:text-3xl font-black text-white mb-1 tracking-wider">
           Playmat Companion
         </h1>
-        <p className="text-xs md:text-sm text-gray-500">
+        {/* <p className="text-xs md:text-sm text-gray-500">
           One Piece TCG Digital Companion
-        </p>
+        </p> */}
       </header>
 
       {/* Main Playmat Container */}
@@ -96,7 +97,7 @@ export default function PlaymatPage() {
         
         {/* TOP HALF - Character Zone (5 draggable slots) */}
         <div className="flex-1 flex flex-col min-h-0 relative z-50">
-           <h2 className="text-lg md:text-xl font-black text-white mb-3 uppercase tracking-wider">
+           <h2 className="text-lg md:text-xl font-black text-white mb-3 uppercase tracking-wider text-center">
             ⚔️ Character Zone
           </h2>
           
@@ -128,7 +129,7 @@ export default function PlaymatPage() {
           
           {/* Leader Zone - Left */}
           <div className="flex-1 min-h-0">
-            <h2 className="text-sm md:text-base font-black text-white mb-2 uppercase tracking-wider">
+            <h2 className="text-sm md:text-base font-black text-white mb-2 uppercase tracking-wider text-center">
               👑 Leader
             </h2>
             <LeaderZone leader={leader} />
@@ -152,7 +153,7 @@ export default function PlaymatPage() {
 
           {/* Trash Counter - Right */}
           <div className="flex-1 min-h-0">
-            <h2 className="text-sm md:text-base font-black text-white mb-2 uppercase tracking-wider">
+            <h2 className="text-sm md:text-base font-black text-white mb-2 uppercase tracking-wider text-center">
               🗑️ Trash
             </h2>
             <TrashCounter />
