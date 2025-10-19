@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useGameStore } from '@/src/store';
+import Script from 'next/script';
 import CharacterSlot from '@/components/playmat/CharacterZone';
 import LeaderZone from '@/components/playmat/LeaderZone';
 import TrashCounter from '@/components/playmat/TrashCounter';
@@ -163,8 +164,30 @@ export default function PlaymatPage() {
       </div>
 
       {/* Footer */}
-      <footer className="text-center mt-3 text-gray-600 text-xs">
+      {/* <footer className="text-center mt-3 text-gray-600 text-xs">
         <p>© 2025 Playmat Companion - Generic TCG Utility</p>
+        <Script
+        src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"
+        strategy="afterInteractive"
+        className='flex '
+        onLoad={() => {
+          // @ts-ignore - Ko-fi script attaches global object
+          if (window.kofiWidgetOverlay) {
+            // @ts-ignore
+            window.kofiWidgetOverlay.draw("chenllectibles", {
+              type: "floating-chat",
+              "floating-chat.donateButton.text": "Support me",
+              "floating-chat.donateButton.background-color": "#ffffff",
+              "floating-chat.donateButton.text-color": "#323842",
+            });
+          }
+        }}
+      />
+      </footer> */}
+
+      <footer className="flex items-center justify-between mt-3 text-xs px-4">
+        <a href='https://ko-fi.com/H2H21N1MTO' target='_blank'><img height='36' className='border-0 h-9' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>   
+        <p className="text-gray-600">© 2025 Playmat Companion</p>
       </footer>
     </div>
   );
