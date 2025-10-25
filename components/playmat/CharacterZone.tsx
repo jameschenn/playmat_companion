@@ -29,6 +29,7 @@ export default function CharacterSlot({
     updateCharacterCost,
     addCharacterStatus,
     removeCharacterStatus,
+    toggleCharacterAbility,
     trashCharacter,
   } = useGameStore();
 
@@ -218,6 +219,23 @@ if (!character.isActive && !readonly) {
           ))}
         </div>
       )}
+
+      {/* Ability Used Toggle */}
+      <button
+        onClick={() => toggleCharacterAbility(character.id)}
+        disabled={readonly}
+        className={`
+          w-full py-1.5 text-xs font-bold rounded transition-colors uppercase tracking-wide
+          ${
+            character.abilityUsed
+              ? 'bg-gray-700 text-gray-400'
+              : 'bg-blue-900 text-blue-200 hover:bg-blue-800'
+          }
+          disabled:opacity-50
+        `}
+      >
+        {character.abilityUsed ? '✗ Ability Used' : '✓ Ability Ready'}
+      </button>
     </div>
   );
 }

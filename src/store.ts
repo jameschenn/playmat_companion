@@ -15,6 +15,7 @@ interface GameStore extends GameState {
   addCharacterStatus: (id: string, status: CharacterStatus) => void;
   removeCharacterStatus: (id: string, status: CharacterStatus) => void;
   trashCharacter: (id: string) => void;
+  toggleCharacterAbility: (id: string) => void;
   // toggleCharacterState: (id: string) => void;
   // updateCharacterStatus: (id: string, status: CharacterStatus[]) => void;
   swapCharacters: (id1: string, id2: string) => void;
@@ -136,6 +137,14 @@ export const useGameStore = create<GameStore>()(
         characters: state.characters.map((c) =>
           c.id === id
             ? { ...c, status: c.status.filter((s) => s !== status) }
+            : c
+        ),
+      })),
+
+      toggleCharacterAbility: (id) => set((state) => ({
+        characters: state.characters.map((c) =>
+          c.id === id
+            ? { ...c, abilityUsed: !c.abilityUsed }
             : c
         ),
       })),

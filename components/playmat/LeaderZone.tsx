@@ -31,9 +31,9 @@ return (
         ${readonly ? 'opacity-75' : 'hover:shadow-xl'}
       `}
     >
-      <h2 className="text-base font-black mb-3 text-center text-yellow-500 uppercase tracking-wider">
-        👑 Leader
-      </h2>
+      {/* <h2 className="text-base font-black mb-3 text-center text-yellow-500 uppercase tracking-wider">
+            Leader
+      </h2> */}
 
       {/* Stats Row */}
       <div className="flex gap-3 mb-3">

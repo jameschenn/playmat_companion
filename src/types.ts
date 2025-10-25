@@ -9,6 +9,7 @@ export type CharacterStatus =
   | 'nullified'
   | 'rush'
   | 'tax'
+  | 'unblockable'
   | 'untargetable';
 
 // export type CharacterState = 'active' | 'rested';
@@ -18,6 +19,7 @@ export interface Character {
   // name: string;
   attack: number;
   cost: number;
+  abilityUsed: boolean;
   status: CharacterStatus[];
   isActive: boolean;
   // state: CharacterState;
@@ -66,6 +68,7 @@ export const STATUS_LABELS: Record<CharacterStatus, string> = {
   'nullified': 'Nullified',
   'rush': 'Rush',
   'tax': 'Tax',
+  'unblockable': 'Unblockable',
   'untargetable': 'Untargetable',
 };
 
@@ -82,6 +85,7 @@ export const createEmptyCharacter = (): Character => ({
   // name: '',
   attack: 0,
   cost: 0,
+  abilityUsed: false,
   status: [],
   // state: 'active',
   isActive: false,

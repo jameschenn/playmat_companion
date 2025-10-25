@@ -63,6 +63,9 @@ export default function PlaymatPage() {
   if (isMobile && !isLandscape) {
     return (
       <div className="w-screen h-screen bg-gradient-to-br from-gray-950 to-gray-900 flex flex-col items-center justify-center gap-6 p-4">
+        <div className="absolute top-2 left-2 opacity-30 hover:opacity-100 transition-opacity z-10">
+          <img src="/favicon.ico" alt="Logo" className="w-6 h-6" />
+        </div>
         <div className="text-center">
           <h1 className="text-4xl font-black text-white mb-4">Playmat Companion</h1>
           <p className="text-lg text-gray-300 mb-8">Please rotate your device</p>
@@ -82,24 +85,27 @@ export default function PlaymatPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black p-3 md:p-4 flex flex-col">
-      {/* Header */}
-      <header className="text-center mb-3 md:mb-4">
-        {/* <img src="/favicon.ico" alt="Favicon" className="mx-auto w-1/15 mb-5" /> */}
-        <h1 className="text-2xl md:text-3xl font-black text-white mb-1 tracking-wider">
-          Playmat Companion
-        </h1>
-        {/* <p className="text-xs md:text-sm text-gray-500">
-          One Piece TCG Digital Companion
-        </p> */}
-      </header>
+      {/* Header TWO OPTIONS FOR NOW. 1) 1 looks good for now since it's just the playmat 2) might be better if we expand and build other features */}
+      {/* <header className="flex items-center justify-between px-4 py-2 mb-3">
+        <div className="flex items-center gap-2">
+          <img src="/favicon.ico" alt="Logo" className="w-6 h-6" />
+          <span className="text-sm font-bold text-gray-400">Playmat Companion</span>
+        </div>
+        <button className="text-xs text-gray-500">⚙️ Settings</button>
+      </header> */}
 
       {/* Main Playmat Container */}
+
+      {/* current 1 header */}
       <div className="flex-1 flex flex-col gap-4 max-w-full mx-auto w-full bg-gradient-to-b from-gray-800 to-gray-900 rounded-xl shadow-2xl border border-gray-700 p-4">
-        
+        <div className="absolute top-7 left-7 opacity-50 hover:opacity-100 transition-opacity z-10">
+          <img src="/favicon.ico" alt="Logo" className="w-5 h-5" />
+        </div>
+
         {/* TOP HALF - Character Zone (5 draggable slots) */}
         <div className="flex-1 flex flex-col min-h-0 relative z-50">
            <h2 className="text-lg md:text-xl font-black text-white mb-3 uppercase tracking-wider text-center">
-            ⚔️ Character Zone
+              Character Zone
           </h2>
           
           {/* Character Grid - 5 slots in a row */}
@@ -131,7 +137,7 @@ export default function PlaymatPage() {
           {/* Leader Zone - Left */}
           <div className="flex-1 min-h-0">
             <h2 className="text-sm md:text-base font-black text-white mb-2 uppercase tracking-wider text-center">
-              👑 Leader
+              Leader
             </h2>
             <LeaderZone leader={leader} />
           </div>
