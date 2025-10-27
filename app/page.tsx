@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useGameStore } from '@/src/store';
-import Script from 'next/script';
+// import Script from 'next/script';
+import Image from 'next/image';
 import CharacterSlot from '@/components/playmat/CharacterZone';
 import LeaderZone from '@/components/playmat/LeaderZone';
 import TrashCounter from '@/components/playmat/TrashCounter';
@@ -64,7 +65,13 @@ export default function PlaymatPage() {
     return (
       <div className="w-screen h-screen bg-gradient-to-br from-gray-950 to-gray-900 flex flex-col items-center justify-center gap-6 p-4">
         <div className="absolute top-2 left-2 opacity-30 hover:opacity-100 transition-opacity z-10">
-          <img src="/favicon.ico" alt="Logo" className="w-6 h-6" />
+          <Image 
+            src="/favicon.ico" 
+            alt="Logo" 
+            width={24}
+            height={24}
+            className="w-6 h-6"
+          />
         </div>
         <div className="text-center">
           <h1 className="text-4xl font-black text-white mb-4">Playmat Companion</h1>
@@ -99,7 +106,13 @@ export default function PlaymatPage() {
       {/* current 1 header */}
       <div className="flex-1 flex flex-col gap-4 max-w-full mx-auto w-full bg-gradient-to-b from-gray-800 to-gray-900 rounded-xl shadow-2xl border border-gray-700 p-4">
         <div className="absolute top-7 left-7 opacity-50 hover:opacity-100 transition-opacity z-10">
-          <img src="/favicon.ico" alt="Logo" className="w-5 h-5" />
+          <Image 
+            src="/favicon.ico" 
+            alt="Logo" 
+            width={24}
+            height={24}
+            className="w-5 h-5"
+          />
         </div>
 
         {/* TOP HALF - Character Zone (5 draggable slots) */}
@@ -192,7 +205,7 @@ export default function PlaymatPage() {
       </footer> */}
 
       <footer className="flex items-center justify-between mt-3 text-xs px-4">
-        <a href='https://ko-fi.com/H2H21N1MTO' target='_blank'><img height='36' className='border-0 h-9' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>   
+        <a href='https://ko-fi.com/H2H21N1MTO' target='_blank'><img height='36' className='border-0 h-9' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' alt='Buy Me a Coffee at ko-fi.com' /></a>   
         <p className="text-gray-600">© 2025 Playmat Companion</p>
       </footer>
     </div>

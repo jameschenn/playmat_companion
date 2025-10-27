@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function DiceRoll() {
 
   const [displayValue, setDisplayValue] = useState<number | string>('🎲');
   const [isRolling, setIsRolling] = useState(false);
-  const [result, setResult] = useState<number | null>(null);
+//   const [result, setResult] = useState<number | null>(null); /*Only need it if we're planning to use rolled value outside of display eg. passing to a parent component or trigger another effect */
 
   const handleDiceRoll = () => {
     
@@ -28,7 +28,7 @@ export default function DiceRoll() {
         const finalResult = Math.floor(Math.random() * 12) + 1;
         setTimeout(() => {
           setDisplayValue(finalResult);
-          setResult(finalResult);
+        //   setResult(finalResult);
           setIsRolling(false);
         }, 100);
       }

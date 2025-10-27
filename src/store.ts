@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { Character, Leader, GameState, CharacterStatus, /*CharacterState*/ } from './types';
+import type { /*Character, Leader, CharacterState*/ GameState, CharacterStatus, } from './types';
 import { INITIAL_LEADER, createEmptyCharacter } from './types';
 
 interface GameStore extends GameState {

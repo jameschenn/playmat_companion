@@ -35,8 +35,6 @@ export default function CharacterSlot({
 
 
 const [isStatusOpen, setIsStatusOpen] = useState(false);
-// Empty state: no attack, no cost, no status
-const isEmpty = character.attack === 0 && character.cost === 0 && character.status.length === 0;
   
 // If empty and not readonly, show + button
 if (!character.isActive && !readonly) {
