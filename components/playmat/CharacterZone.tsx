@@ -223,7 +223,7 @@ if (!character.isActive && !readonly) {
         onClick={() => toggleCharacterAbility(character.id)}
         disabled={readonly}
         className={`
-          w-full py-1.5 text-xs font-bold rounded transition-colors uppercase tracking-wide
+          w-full py-1.5 text-xs font-bold rounded transition-colors uppercase tracking-wide mt-3
           ${
             character.abilityUsed
               ? 'bg-gray-700 text-gray-400'
