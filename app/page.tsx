@@ -127,7 +127,7 @@ export default function PlaymatPage() {
           </h2>
           
           {/* Character Grid - 5 slots in a row */}
-          <div className="flex gap-3 flex-1">
+          <div className="flex gap-3 flex-1 overflow-x-auto overflow-y-hidden">
             {characters.slice(0, 5).map((character) => (
               <div
                 // key={character.id}
