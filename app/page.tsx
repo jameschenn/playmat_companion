@@ -8,12 +8,17 @@ import CharacterSlot from '@/components/playmat/CharacterZone';
 import LeaderZone from '@/components/playmat/LeaderZone';
 import TrashCounter from '@/components/playmat/TrashCounter';
 import DiceRoller from '@/components/playmat/DiceRoll';
+import { useDragAndDrop } from '@/hooks/useDragAndDrop';
 
 export default function PlaymatPage() {
+
   const { characters, leader, resetGame, swapCharacters } = useGameStore();
   const [isLandscape, setIsLandscape] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const [draggedCharacterId, setDraggedCharacterId] = useState<string | null>(null);
+  // const [draggedCharacterId, setDraggedCharacterId] = useState<string | null>(null);
+
+  const {
+    draggedId, handleDragStart, handleDragEnd, handleDragOver,handleDrop, handleTouchStart, handleTouchMove, handleTouchEnd, } = useDragAndDrop(swapCharacters);
 
   useEffect(() => {
     const checkOrientation = () => {
@@ -38,27 +43,27 @@ export default function PlaymatPage() {
     }
   };
 
-  const handleDragStart = (e: React.DragEvent<HTMLDivElement>, id: string) => {
-    setDraggedCharacterId(id);
-    e.dataTransfer.effectAllowed = 'move';
-  };
+  // const handleDragStart = (e: React.DragEvent<HTMLDivElement>, id: string) => {
+  //   setDraggedCharacterId(id);
+  //   e.dataTransfer.effectAllowed = 'move';
+  // };
 
-  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
-  };
+  // const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+  //   e.preventDefault();
+  //   e.dataTransfer.dropEffect = 'move';
+  // };
 
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>, targetId: string) => {
-    e.preventDefault();
-    if (draggedCharacterId && draggedCharacterId !== targetId) {
-      swapCharacters(draggedCharacterId, targetId);
-    }
-    setDraggedCharacterId(null);
-  };
+  // const handleDrop = (e: React.DragEvent<HTMLDivElement>, targetId: string) => {
+  //   e.preventDefault();
+  //   if (draggedCharacterId && draggedCharacterId !== targetId) {
+  //     swapCharacters(draggedCharacterId, targetId);
+  //   }
+  //   setDraggedCharacterId(null);
+  // };
 
-  const handleDragEnd = () => {
-    setDraggedCharacterId(null);
-  };
+  // const handleDragEnd = () => {
+  //   setDraggedCharacterId(null);
+  // };
 
   // Mobile Portrait - Rotation Prompt
   if (isMobile && !isLandscape) {
@@ -125,16 +130,28 @@ export default function PlaymatPage() {
           <div className="flex gap-3 flex-1">
             {characters.slice(0, 5).map((character) => (
               <div
+                // key={character.id}
+                // className="flex-1 min-h-0"
+                // onDragEnd={handleDragEnd}
                 key={character.id}
-                className="flex-1 min-h-0"
+                data-character-id={character.id}
+                className="flex-1 min-h-0 touch-none"
+                draggable
+                onDragStart={(e) => handleDragStart(e, character.id)}
                 onDragEnd={handleDragEnd}
+                onDragOver={handleDragOver}
+                onDrop={(e) => handleDrop(e, character.id)}
+                onTouchStart={(e) => handleTouchStart(e, character.id)}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
               >
                 <CharacterSlot
                   character={character}
-                  isDragging={draggedCharacterId === character.id}
-                  onDragStart={handleDragStart}
-                  onDragOver={handleDragOver}
-                  onDrop={handleDrop}
+                  // isDragging={draggedCharacterId === character.id}
+                  isDragging={draggedId === character.id}
+                  // onDragStart={handleDragStart}
+                  // onDragOver={handleDragOver}
+                  // onDrop={handleDrop}
                 />
               </div>
             ))}
