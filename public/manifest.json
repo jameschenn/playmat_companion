@@ -1,0 +1,37 @@
+{
+  "name": "Playmat Companion",
+  "short_name": "Playmat Companion",
+  "description": "Supplement your One Piece Trading Card Games with the next-gen tracker. Ditch your physical counters.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#111827",
+  "orientation": "landscape",
+  "scope": "/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/playmat-screenshot.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Playmat view in landscape"
+    }
+  ],
+  "categories": ["games", "utilities"],
+  "prefer_related_applications": false
+}

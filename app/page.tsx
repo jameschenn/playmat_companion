@@ -8,6 +8,7 @@ import CharacterSlot from '@/components/playmat/CharacterZone';
 import LeaderZone from '@/components/playmat/LeaderZone';
 import TrashCounter from '@/components/playmat/TrashCounter';
 import DiceRoller from '@/components/playmat/DiceRoll';
+import PWAInstallButton from '@/components/PWAInstallButton';
 import { useDragAndDrop } from '@/hooks/useDragAndDrop';
 
 export default function PlaymatPage() {
@@ -222,7 +223,10 @@ export default function PlaymatPage() {
       </footer> */}
 
       <footer className="flex items-center justify-between mt-3 text-xs px-4">
-        <a href='https://ko-fi.com/H2H21N1MTO' target='_blank'><img height='36' className='border-0 h-9' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' alt='Buy Me a Coffee at ko-fi.com' /></a>   
+        <div className='flex row-auto gap-3'>
+          <a href='https://ko-fi.com/H2H21N1MTO' target='_blank'><img height='36' className='border-0 h-9' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' alt='Buy Me a Coffee at ko-fi.com' /></a> 
+          <PWAInstallButton /> 
+        </div>
         <p className="text-gray-600">© 2025 Playmat Companion</p>
       </footer>
     </div>
