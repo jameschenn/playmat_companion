@@ -81,7 +81,8 @@ export const INITIAL_LEADER: Leader = {
 };
 
 export const createEmptyCharacter = (): Character => ({
-  id: crypto.randomUUID(),
+  // id: crypto.randomUUID(),
+  id: Math.random().toString(36).substring(2, 9),
   // name: '',
   attack: 0,
   cost: 0,

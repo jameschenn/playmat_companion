@@ -44,7 +44,7 @@ export default function PlaymatPage() {
   }, []);
 
   const handleReset = () => {
-    if (confirm('Reset the entire game state? This cannot be undone.')) {
+    if (confirm('Start a fresh? This cannot be undone.')) {
       resetGame();
     }
   };
@@ -119,9 +119,6 @@ export default function PlaymatPage() {
           <div className="flex gap-3 flex-1 overflow-x-auto overflow-y-hidden">
             {characters.slice(0, 5).map((character) => (
               <div
-                // key={character.id}
-                // className="flex-1 min-h-0"
-                // onDragEnd={handleDragEnd}
                 key={character.id}
                 data-character-id={character.id}
                 className="flex-1 min-h-0 touch-none"
@@ -136,11 +133,7 @@ export default function PlaymatPage() {
               >
                 <CharacterSlot
                   character={character}
-                  // isDragging={draggedCharacterId === character.id}
                   isDragging={draggedId === character.id}
-                  // onDragStart={handleDragStart}
-                  // onDragOver={handleDragOver}
-                  // onDrop={handleDrop}
                 />
               </div>
             ))}
@@ -173,7 +166,7 @@ export default function PlaymatPage() {
               onClick={handleReset}
               className="py-2 px-4 bg-gradient-to-br from-red-900 to-red-950 hover:from-red-800 hover:to-red-900 text-red-200 font-bold rounded-lg transition-colors text-sm border border-red-700 shadow-lg"
             >
-              🔄 Reset
+              🔄 Reset Board
             </button>
           </div>
 

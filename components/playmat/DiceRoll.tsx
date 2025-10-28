@@ -42,7 +42,7 @@ export default function DiceRoll() {
         disabled={isRolling}
         className={`
           relative w-20 h-20 rounded-xl shadow-lg
-          text-3xl font-bold transition-all duration-300
+          text-3xl font-bold transition-transform duration-300
           active:scale-95
           disabled:cursor-not-allowed
           ${isRolling 
@@ -51,9 +51,8 @@ export default function DiceRoll() {
           }
         `}
       >
-      <div className="flex items-center justify-center w-full h-full text-center leading-none">
+      
         {displayValue}
-      </div>
         
         {/* Pulsing glow effect while rolling */}
         {isRolling && (

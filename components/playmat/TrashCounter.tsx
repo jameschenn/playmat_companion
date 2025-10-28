@@ -59,7 +59,7 @@ export default function TrashCounter() {
         onClick={resetTrashCount}
         className="px-2 py-1.5 text-xs font-bold bg-gray-700 hover:bg-gray-600 text-gray-200 rounded transition-colors uppercase tracking-wide"
       >
-        Reset
+        Empty Trash
       </button>
     </div>
   );
