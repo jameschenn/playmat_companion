@@ -51,7 +51,9 @@ export default function DiceRoll() {
           }
         `}
       >
+      <div className="flex items-center justify-center w-full h-full text-center leading-none">
         {displayValue}
+      </div>
         
         {/* Pulsing glow effect while rolling */}
         {isRolling && (
