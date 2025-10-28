@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useGameStore } from '@/src/store';
-// import Script from 'next/script';
 import Image from 'next/image';
 import CharacterSlot from '@/components/playmat/CharacterZone';
 import LeaderZone from '@/components/playmat/LeaderZone';
@@ -13,10 +12,16 @@ import { useDragAndDrop } from '@/hooks/useDragAndDrop';
 
 export default function PlaymatPage() {
 
+  // Prevent hydration mismatch: Store generates random character IDs on both server and client, causing different IDs between SSR and client render. Only render after client-side hydration completes.
+  const [isClient, setIsClient] = useState(false);
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const { characters, leader, resetGame, swapCharacters } = useGameStore();
   const [isLandscape, setIsLandscape] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  // const [draggedCharacterId, setDraggedCharacterId] = useState<string | null>(null);
 
   const {
     draggedId, handleDragStart, handleDragEnd, handleDragOver,handleDrop, handleTouchStart, handleTouchMove, handleTouchEnd, } = useDragAndDrop(swapCharacters);
@@ -44,27 +49,10 @@ export default function PlaymatPage() {
     }
   };
 
-  // const handleDragStart = (e: React.DragEvent<HTMLDivElement>, id: string) => {
-  //   setDraggedCharacterId(id);
-  //   e.dataTransfer.effectAllowed = 'move';
-  // };
-
-  // const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-  //   e.preventDefault();
-  //   e.dataTransfer.dropEffect = 'move';
-  // };
-
-  // const handleDrop = (e: React.DragEvent<HTMLDivElement>, targetId: string) => {
-  //   e.preventDefault();
-  //   if (draggedCharacterId && draggedCharacterId !== targetId) {
-  //     swapCharacters(draggedCharacterId, targetId);
-  //   }
-  //   setDraggedCharacterId(null);
-  // };
-
-  // const handleDragEnd = () => {
-  //   setDraggedCharacterId(null);
-  // };
+  // Wait for client-side hydration before rendering
+  if (!isClient) {
+    return null;
+  }
 
   // Mobile Portrait - Rotation Prompt
   if (isMobile && !isLandscape) {
@@ -199,28 +187,6 @@ export default function PlaymatPage() {
 
         </div>
       </div>
-
-      {/* Footer */}
-      {/* <footer className="text-center mt-3 text-gray-600 text-xs">
-        <p>© 2025 Playmat Companion - Generic TCG Utility</p>
-        <Script
-        src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"
-        strategy="afterInteractive"
-        className='flex '
-        onLoad={() => {
-          // @ts-ignore - Ko-fi script attaches global object
-          if (window.kofiWidgetOverlay) {
-            // @ts-ignore
-            window.kofiWidgetOverlay.draw("chenllectibles", {
-              type: "floating-chat",
-              "floating-chat.donateButton.text": "Support me",
-              "floating-chat.donateButton.background-color": "#ffffff",
-              "floating-chat.donateButton.text-color": "#323842",
-            });
-          }
-        }}
-      />
-      </footer> */}
 
       <footer className="flex items-center justify-between mt-3 text-xs px-4">
         <div className='flex row-auto gap-3'>

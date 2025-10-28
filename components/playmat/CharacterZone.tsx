@@ -9,9 +9,6 @@ interface CharacterSlotProps {
   character: Character;
   readonly?: boolean;
   isDragging?: boolean;
-//   onDragStart?: (e: React.DragEvent<HTMLDivElement>, id: string) => void;
-//   onDragOver?: (e: React.DragEvent<HTMLDivElement>) => void;
-//   onDrop?: (e: React.DragEvent<HTMLDivElement>, id: string) => void;
 }
 
 export default function CharacterSlot({
@@ -40,10 +37,6 @@ const [isStatusOpen, setIsStatusOpen] = useState(false);
 if (!character.isActive && !readonly) {
     return (
       <div
-        // draggable={!readonly}
-        // onDragStart={onDragStart ? (e) => onDragStart(e, character.id) : undefined}
-        // onDragOver={onDragOver}
-        // onDrop={onDrop ? (e) => onDrop(e, character.id) : undefined}
         className={`
           relative rounded-lg border-2 border-dashed border-gray-500 bg-gray-900 p-2.5 transition-all h-full
           flex items-center justify-center min-h-24
@@ -62,10 +55,6 @@ if (!character.isActive && !readonly) {
 
   return (
     <div
-    //   draggable={!readonly}
-    //   onDragStart={onDragStart ? (e) => onDragStart(e, character.id) : undefined}
-    //   onDragOver={onDragOver}
-    //   onDrop={onDrop ? (e) => onDrop(e, character.id) : undefined}
       className={`
         relative rounded-lg border-2 p-3 transition-all h-full
         bg-gradient-to-br from-gray-800 to-gray-900 border-red-700 shadow-lg
